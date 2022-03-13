@@ -143,7 +143,7 @@ EOT;
             <nav class="nav">
                <div class="padded">
                   <ul>
-                     <li class="active"><a class="nav-section1" href="index.html">Hone</a></li>
+                     <li class="active"><a class="nav-section1" href="index.html">Home</a></li>
                      <li><a class="nav-section2" href="#">About </a></li>
                      <li><a class="nav-section3" href="#">Traning </a></li>
                      <li><a class="nav-section4" href="#">Gallery </a></li>
