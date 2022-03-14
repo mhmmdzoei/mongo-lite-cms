@@ -18,9 +18,9 @@ class AdminAuthentication extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\View\View
-     */    
+     */
     public function index(Request $request){
-        $data = array();
+        $data = array("error"=> "");
         return View::make("admin/login")->with($data);
     }
 
@@ -34,21 +34,23 @@ class AdminAuthentication extends Controller
             return (new response_error())->get_c_response($validator->errors()->first(),422);
         }
 
-        $user = user::where('username', $request->input('username'))->where('is_active','1')->first();        
+        $user = user::where('username', $request->input('username'))->where('is_active','1')->first();
 
         $isValid = false;
-        
+
         if($user && isset($user->salt) && isset($user->password)){
             $req_password = generatePassword($user->salt,$request->input('password'));
             if($user->password == $req_password) $isValid = true;
         }
 
-        if($isValid){        
-            Session::put('payro_admin_token', $user->id);     
-            Session::save();       
+        if($isValid){
+            Session::put('mlc_admin_token', $user->id);
+            Session::save();
             return redirect()->route('admin_contents');
         }else{
-            return redirect()->route('admin_login');
+            $data = array("error"=> "The username or password is wrong.");
+
+            return View::make("admin/login")->with($data);
         }
     }
 

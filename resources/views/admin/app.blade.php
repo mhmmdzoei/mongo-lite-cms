@@ -63,8 +63,8 @@
                             </li>
                             <li><a><i class="fa fa-user"></i> Users <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{ route('admin_contents') }}">List</a></li>
-                                    <li><a href="{{ route('admin_contents_new') }}">New</a></li>
+                                    <li><a href="{{ route('admin_users') }}">List</a></li>
+                                    <li><a href="{{ route('admin_users_new') }}">New</a></li>
                                 </ul>
                             </li>
                         </ul>

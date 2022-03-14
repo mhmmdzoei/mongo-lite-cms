@@ -31,6 +31,11 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
+          @if ($error !== "")
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                  {{ $error }}
+              </div>
+          @endif
           <form action="{{ route('admin_login_post') }}" method="post">
               @csrf <!-- {{ csrf_field() }} -->
               <h1>Login</h1>
