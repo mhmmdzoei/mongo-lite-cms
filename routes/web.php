@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\AdminAuthentication;
 use App\Http\Controllers\Admin\AdminContents;
+use App\Http\Controllers\Admin\AdminUsers;
 use App\Http\Middleware\AdminUsersAccessible;
 use App\Http\Controllers\PageContent;
-use App\Http\Controllers\PayroLink\Payment;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,12 @@ Route::group(['middleware' => [AdminUsersAccessible::class]], function () {
     Route::get('admin/contents/edit/{edit_id}', [AdminContents::class, 'form'])->name('admin_contents_form');
     Route::post('admin/contents/edit/{edit_id}', [AdminContents::class, 'edit'])->name('admin_contents_edit');
     Route::get('admin/contents/delete/{edit_id}', [AdminContents::class, 'delete'])->name('admin_contents_delete');
+
+    Route::get('admin/users', [AdminUsers::class, 'index'])->name('admin_users');
+    Route::get('admin/users/new', [AdminUsers::class, 'new'])->name('admin_users_new');
+    Route::get('admin/users/edit/{edit_id}', [AdminUsers::class, 'form'])->name('admin_users_form');
+    Route::post('admin/users/edit/{edit_id}', [AdminUsers::class, 'edit'])->name('admin_users_edit');
+    Route::get('admin/users/delete/{edit_id}', [AdminUsers::class, 'delete'])->name('admin_users_delete');
 
     Route::get('admin/signout', [AdminAuthentication::class, 'signout'])->name('admin_signout');
 

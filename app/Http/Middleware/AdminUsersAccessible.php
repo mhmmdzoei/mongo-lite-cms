@@ -25,16 +25,16 @@ class AdminUsersAccessible
     {
 
 
-        if (!Session::has('payro_admin_token'))
+        if (!Session::has('mlc_admin_token'))
         {
             return redirect()->route('admin_login');
         }
 
 
-        $payro_admin_token = Session::get('payro_admin_token');
-        $finded_user = user::find($payro_admin_token);
+        $mlc_admin_token = Session::get('mlc_admin_token');
+        $finded_user = user::find($mlc_admin_token);
 
-        
+
         if(!$finded_user){
             return redirect()->route('admin_login');
         }
@@ -42,6 +42,6 @@ class AdminUsersAccessible
 
         $request->attributes->add(['user' => $finded_user]);
         return $next($request);
-        
+
     }
 }
